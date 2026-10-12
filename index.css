@@ -1,0 +1,257 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 35px 16px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+    background:
+        radial-gradient(ellipse at top, #57132f 0%, transparent 55%),
+        linear-gradient(145deg, #170713, #08040c 75%);
+}
+
+.hearts-container,
+.sparkles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.hearts-container {
+    z-index: 1;
+}
+
+.sparkles {
+    z-index: 0;
+    background-image:
+        radial-gradient(circle, #ffffff80 1px, transparent 2px),
+        radial-gradient(circle, #ff7da855 1px, transparent 2px);
+    background-size: 90px 90px, 130px 130px;
+    animation: sparkle 5s linear infinite;
+}
+
+.love-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 440px;
+    padding: 35px 25px;
+    text-align: center;
+    border: 1px solid #ff77a744;
+    border-radius: 28px;
+    background: rgba(39, 12, 29, 0.78);
+    box-shadow: 0 0 50px #ff176522;
+    backdrop-filter: blur(12px);
+    animation: appear 1.4s ease;
+}
+
+.top-text {
+    color: #ff9abb;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 17px;
+}
+
+h1 {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: #eacbd8;
+    font-size: 13px;
+}
+
+.main-heart {
+    font-size: 90px;
+    margin: 25px 0;
+    animation: heartbeat 1.2s infinite;
+    filter: drop-shadow(0 0 20px #ff174d);
+}
+
+h2 {
+    color: #ff91b8;
+    font-family: Georgia, serif;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.description {
+    color: #f3dce6;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 15px 27px;
+    color: white;
+    background: linear-gradient(45deg, #e80e58, #ff79a6);
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 25px #ff176544;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 30px #ff1765aa;
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+#musicStatus {
+    color: #e9afc5;
+    font-size: 11px;
+    margin-top: 17px;
+}
+
+#loveMessage {
+    margin-top: 25px;
+    color: #f8e5ed;
+    font-size: 14px;
+    line-height: 1.9;
+    animation: appear 1s ease;
+}
+
+#loveMessage p {
+    margin-bottom: 17px;
+}
+
+#loveMessage h2 {
+    margin-bottom: 20px;
+}
+
+#loveMessage h3 {
+    color: #ff91b8;
+    margin-top: 20px;
+    font-family: Georgia, serif;
+}
+
+.signature {
+    color: #ff91b8;
+    font-style: italic;
+}
+
+.hidden {
+    display: none;
+}
+
+.divider {
+    width: 60%;
+    height: 1px;
+    margin: 0 auto 25px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        #ff79a6,
+        transparent
+    );
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    pointer-events: none;
+    animation: floatUp linear forwards;
+}
+
+footer {
+    position: relative;
+    z-index: 2;
+    margin-top: 25px;
+    color: #c89aaf;
+    font-size: 11px;
+    text-align: center;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sparkle {
+    from {
+        background-position: 0 0, 30px 40px;
+    }
+
+    to {
+        background-position: 90px 90px, 160px 170px;
+    }
+}
+
+@media (max-width: 400px) {
+    .love-card {
+        padding: 28px 19px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    .main-heart {
+        font-size: 75px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
